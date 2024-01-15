@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 function ApiCaller() {
   const [url, setUrl] = useState("");
   const [responseData, setResponseData] = useState(null);

@@ -23,14 +23,14 @@ import './App.css';
 // }
 // export default App;
 import React from "react";
-import ApiCaller from "./ApiCaller";
+import GetValidicData from "./GetValidicData";
 // import ValidicCaller from "./ValidicCaller"
+import TimeConverter from './TimeConverter';
 
 function App() {
   return (
     <div>
-      {/* <ValidicCaller /> */}
-      <ApiCaller />
+      <GetValidicData />
     </div>
   );
 }

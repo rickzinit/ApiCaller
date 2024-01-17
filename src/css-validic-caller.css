@@ -1,0 +1,48 @@
+.header1 {
+    font-weight: bold;
+    color: blue;
+    text-transform: capitalize;
+  }
+  .Collapsible {
+    /* General styling */
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden; /* Hide content initially */
+    transition: max-height 0.3s ease-in-out; /* Smooth Collapse animation */
+  }
+  
+  .Collapsible-header {
+    /* Header styling */
+    padding: 10px 15px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+  
+  .Collapsible-header:hover {
+    /* Hover effect */
+    background-color: #d0d0d0;
+  }
+  
+  .Collapsible__contentInner {
+    /* Content styling */
+    background-color: palevioletred;
+    padding: 10px 15px;
+    max-height: 0; /* Initially hidden */
+    overflow: hidden; /* Prevent content overflow */
+  }
+  
+  .Collapsible__contentOuter {
+    /* Expand content on toggle */
+    max-height: 500px; /* Adjust max-height as needed */
+  }
+  
+  @media (max-width: 768px) { /* Adjust breakpoint as needed */
+    .Collapsible-header {
+      /* Optional: Adjust header style for smaller screens */
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+  

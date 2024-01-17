@@ -1,119 +1,119 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import TimeConverter from './TimeConverter';
-import Collapsible from 'react-collapsible';
 
-function GetValidicData() {
+function GetValidicData(validic) {
   const [validicId, setValidicId] = useState('');
   const [date, setDate] = useState('');
   const [responseData, setResponseData] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [vdata, setIsLoading] = useState(false);
+  const [jsonData, setJsonData] = useState(null);
+  const [customData, setCustomData] = useState({});
+
+  // const [responseData, setResponseData] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   setError(null);
+
+  //   try {
+  //     const response = await axios.get(url);
+  //     setResponseData(response.data); // Access the "data" array
+  //   } catch (error) {
+  //     setError(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
+  // return (
+  //   <div>
+  //     <form onSubmit={handleSubmit}>
+  //       <label htmlFor="url">Enter URL:</label>
+  //       <input type="text" id="url" value={url} onChange={(e) => setUrl(e.target.value)} />
+  //       <button type="submit" disabled={isLoading}>
+  //         {isLoading ? 'Loading...' : 'Send GET Request'}
+  //       </button>
+  //     </form>
+  //     {error && <p>{error.message}</p>}
+  //     {responseData && (
+  //       <table>
+  //         <thead>
+  //           <tr>
+  //             <th>Checksum</th>
+  //             <th>Created At</th>
+  //             <th>ID</th>
+  //             <th>Log ID</th>
+  //             <th>Metrics</th>
+  //           </tr>
+  //         </thead>
+  //         <tbody>
+  //           {responseData.map((item) => (
+  //             <tr key={item.id}>
+  //               <td>{item.checksum}</td>
+  //               <td>{item.created_at}</td>
+  //               <td>{item.id}</td>
+  //               <td>{item.log_id}</td>
+  //               <td>
+  //                 <table>
+  //                   <thead>
+  //                     <tr>
+  //                       <th>Type</th>
+  //                       <th>Origin</th>
+  //                       <th>Unit</th>
+  //                       <th>Data Points</th>
+  //                     </tr>
+  //                   </thead>
+  //                   <tbody>
+  //                     {item.metrics.map((metric) => (
+  //                       <tr key={metric.type}>
+  //                         <td>{metric.type}</td>
+  //                         <td>{metric.origin}</td>
+  //                         <td>{metric.unit}</td>
+  //                         <td>
+  //                           <ul>
+  //                             {metric.data_points.map((dataPoint) => (
+  //                               <li key={dataPoint.time}>
+  //                                 Value: {dataPoint.value}, Time: {dataPoint.time}
+  //                               </li>
+  //                             ))}
+  //                           </ul>
+  //                         </td>
+  //                       </tr>
+  //                     ))}
+  //                   </tbody>
+  //                 </table>
+  //               </td>
+  //             </tr>
+  //           ))}
+  //         </tbody>
+  //       </table>
+  //     )}
+  //   </div>
+  // );
+
+// ****** START MAIN LOOP
+
+
+if (validic.data) {
+  // Create custom json object of validic data
+  customData.childNodes = [];
+  for (const childNode of validic.data) {
+    customData.childNodes.push({
+      device: childNode.source.type
+    });
+    
+    setCustomData(customData);
+  }
+
+}
+
   
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
-    setIsLoading(true);
 
-    try {
-      const response = await axios.get(
-        `https://api.v2.validic.com/organizations/5d1b5b162141970001178f0e/users/${validicId}/intraday?start_date=${date}&token=b2673e4991269d7be4391bef5888c385`
-      );
-      setResponseData(response.data);
-
-    //   const jsonData = response.data;
-    //   const typeValue = (jsonData.data[0].source.type) || 'Type not found';
-    //   setResponseData(typeValue)
-      
-
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-
-
-  return (
-    <div>
-    <TimeConverter />
-      <h1>Get Validic Data</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="validicId">Validic ID:</label>
-        <input type="text" id="validicId" value={validicId} onChange={(e) => setValidicId(e.target.value)} />
-        <label htmlFor="date">Date (YYYY-MM-DD):</label>
-        <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
-        <button type="submit">Get Data</button>
-      </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {isLoading && <p>Loading data...</p>}
-      {responseData && <p style={{ color: 'red' }}><a href={`https://api.v2.validic.com/organizations/5d1b5b162141970001178f0e/users/${validicId}/intraday?start_date=${date}&token=b2673e4991269d7be4391bef5888c385`}>
-        {`https://api.v2.validic.com/organizations/5d1b5b162141970001178f0e/users/${validicId}/intraday?start_date=${date}&token=b2673e4991269d7be4391bef5888c385`}</a></p>
-      } 
-      {responseData && responseData.data[0].source.type}
-      {responseData && 
-         <div>
-         <pre>
-           <code>
-             {/* {JSON.stringify(responseData.data[0], null, 2)} */}
-           </code>
-         </pre>
-
-         {/* {Object.entries(responseData.data).map(([k,v]) => (
-            k
-
-            ))} */}
-
-         
-
-         <ul>
-            {/* Don't include metrics node */}
-           {Object.entries(responseData.data[0]).map(([key, value]) => (
-             key !== "metrics" && <li key={key}>
-               <strong>{key}:</strong> {JSON.stringify(value, null, 2)}
-             </li>
-           ))}
-         </ul>
-         <ul>
-            <b>METRICS</b>
-           {Object.entries(responseData.data[0].metrics[0]).map(([key, value]) => (
-             key !== "data_points" && <li key={key}>
-               <strong>{key}:</strong> {JSON.stringify(value, null, 2)}
-             </li>
-           ))}
-         </ul>
-         <ul>
-            <b>{responseData.data[0].metrics[0].type}: {Object.keys(responseData.data[0].metrics[0].data_points).length}</b>
-            <div>
-            <Collapsible trigger={<button onClick={toggle}>{isOpen ? 'Collapse Values' : 'Expand Values'}</button>} 
-                >
-            {Object.entries(responseData.data[0].metrics[0].data_points).map(([key, value]) => (    
-            <div style={{background: '#EAFFF1', width: '500px', padding: '5px'}}>              
-                        <li key={key}>
-                                    
-                        <strong>{key}- </strong>  {responseData.data[0].metrics[0].type}: {responseData.data[0].metrics[0].data_points[key].value}, 
-                            time: {responseData.data[0].metrics[0].data_points[key].time}
-                        
-                        </li>
-            </div>
-                    ))
-                }
-            </Collapsible>
-            
-            </div>
-         </ul>
-         
-       </div>
-      }
-      
-     </div>
-  );
+return customData;
 }
 
 export default GetValidicData;

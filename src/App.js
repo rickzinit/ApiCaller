@@ -24,13 +24,14 @@ import './App.css';
 // export default App;
 import React from "react";
 import GetValidicData from "./GetValidicData";
-// import ValidicCaller from "./ValidicCaller"
+import ValidicCaller from "./ValidicCaller"
 import TimeConverter from './TimeConverter';
 
 function App() {
+
   return (
     <div>
-      <GetValidicData />
+      <ValidicCaller />
     </div>
   );
 }

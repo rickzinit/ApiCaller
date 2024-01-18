@@ -1,15 +1,125 @@
+.title1 {
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(213, 142, 19);
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    margin-left: 3px;
+    margin-top: 10px;
+}
+
+.title2 {
+    font-weight: bold;
+    font-size: 24px;
+    color: rgb(19, 213, 93);
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    margin-left: 3px;
+    margin-top: 5px;
+}
+
+.title3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 3px;
+}
+
 .header1 {
     font-weight: bold;
-    color: blue;
+    color: rgb(9, 99, 225);
     text-transform: capitalize;
-  }
-  .Collapsible {
-    /* General styling */
-    width: 500px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     margin-bottom: 10px;
-    overflow: hidden; /* Hide content initially */
+  }
+
+  .scroll {overflow-y: auto;}
+
+  .header2 {
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-left: -20px;
+  }
+
+  .form1 {
+    width: 690px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: #3D9970;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 40px;
+  }
+
+  .textbox1 {
+    width: 400px;
+    font-size: 20px;
+  }
+
+  .btn-get-data {
+    font-weight: bold;
+    background-color: white;
+    border-style: outset;
+    border-width: 5px ;
+    border-radius: 10px;
+    margin: 5px;
+  }
+
+  .left1 {
+    margin: 20px;
+  }
+
+  .top1 {
+    margin-top: 20px;
+  }
+
+  .border1 {
+    border-width: 3px;
+    border-color: #04AA6D;
+    border-style: solid;
+  }
+  
+  .list1 {
+    width: 500px; 
+    padding: 10px;
+    margin-left: 10px
+  }
+
+  .div-link {
+    width: 500px;
+    margin: 10px;
+  }
+
+  .metrics-list {
+    width: 600px; 
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: -20px;
+    line-height: 30px;
+  }
+
+  .button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .Collapsible {
+    background-color: #04AA6D; /* Green */
+    /* General styling */
+    width: 600px;
+    border: 0px solid #ccc;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    /* overflow-y: auto; */
+    overflow: hidden; /*Hide content initially*/
     transition: max-height 0.3s ease-in-out; /* Smooth Collapse animation */
   }
   
@@ -27,15 +137,16 @@
   
   .Collapsible__contentInner {
     /* Content styling */
-    background-color: palevioletred;
+    background-color: #7FDBFF;
     padding: 10px 15px;
-    max-height: 0; /* Initially hidden */
-    overflow: hidden; /* Prevent content overflow */
+    overflow-y: auto;
+    max-height: 500px; /* Initially hidden */
+    /* overflow: hidden; Prevent content overflow */ 
   }
   
   .Collapsible__contentOuter {
     /* Expand content on toggle */
-    max-height: 500px; /* Adjust max-height as needed */
+    /* max-height: 500px; Adjust max-height as needed */
   }
   
   @media (max-width: 768px) { /* Adjust breakpoint as needed */

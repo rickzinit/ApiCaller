@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function TimeConverter() {
+function TimeConverter(utc) {
   const [utcTime, setUtcTime] = useState('');
   const [localTime, setLocalTime] = useState('');
 
@@ -9,7 +9,8 @@ function TimeConverter() {
   };
 
   useEffect(() => {
-    if (utcTime) {
+    if (utc) {
+      const utcTime = utc.utc;
       const date = new Date(utcTime);
       const options = {
         timeZone: 'UTC',
@@ -23,10 +24,10 @@ function TimeConverter() {
   }, [utcTime]);
 
   return (
-    <div style={{ border: '2px solid red', padding: '10px' }}>
-      <input type="text" value={utcTime} onChange={handleUtcTimeChange} placeholder="Enter UTC time (YYYY-MM-DDTHH:mm:ss)" />
-      <p>Local Time: {localTime}</p>
-    </div>
+    <span>
+      {/* <input type="text" value={utcTime} onChange={handleUtcTimeChange} placeholder="Enter UTC time (YYYY-MM-DDTHH:mm:ss)" /> */}
+      {localTime}
+    </span>
   );
 }
 
